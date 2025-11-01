@@ -5,6 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zee's Empire | Fashion Has No Boundary </title>
   <style>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Site with Watermark</title>
+  <style>
+    :root{
+      /* Change these to tweak the watermark appearance */
+      --watermark-url: url("https://raw.githubusercontent.com/ZeeEmpire/.coo/main/IMG-20251101-WA0008.jpg");
+      --watermark-opacity: 0.06;    /* 0 (invisible) .. 1 (opaque) */
+      --watermark-size: 25vmin;     /* use px, %, vmin, etc. */
+      --watermark-repeat: no-repeat;/* "repeat" or "no-repeat" */
+      --watermark-position: center center;
+      --watermark-blend: normal;    /* try "multiply" or "screen" if desired */
+      --watermark-z: 9999;          /* ensure watermark sits on top (but pointer-events:none) */
+    }
+
+    /* basic page styling for demo */
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #ffffff;
+      color: #111;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Watermark overlay */
+    .watermark {
+      position: fixed;
+      inset: 0; /* top:0; right:0; bottom:0; left:0; */
+      pointer-events: none; /* allow clicks through the watermark */
+      z-index: var(--watermark-z);
+      display: block;
+      background-image: var(--watermark-url);
+      background-repeat: var(--watermark-repeat);
+      background-position: var(--watermark-position);
+      background-size: var(--watermark-size);
+      opacity: var(--watermark-opacity);
+      mix-blend-mode: var(--watermark-blend);
+      /* optional subtle blur for soft look (uncomment to use) */
+      /* filter: blur(0.2px); */
+    }
+
+    /* If you want the watermark to be centered but not cover small screens too large,
+       we add a media rule to reduce size on small devices */
+    @media (max-width:600px){
+      :root{ --watermark-size: 40vmin; --watermark-opacity: 0.05; }
+    }
+
+    /* Demo content layout */
+    .container{
+      max-width: 900px;
+      margin: 48px auto;
+      padding: 24px;
+    }
+    header h1{ margin:0 0 8px 0; font-size: clamp(1.6rem, 2.5vw, 2.4rem); }
+    p.lead{ color: #444; font-size:1.05rem; }
+    main{ margin-top:2rem; line-height:1.6; }
+    pre.code {
+      background:#f6f8fa;
+      padding:12px;
+      border-radius:8px;
+      overflow:auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Watermark element (keeps pointer-events disabled so it doesn't block links) -->
+  <span class="watermark" aria-hidden="true"></span>
+
+  <!-- Example page content -->
+  <div class="container">
+    <header>
+      <h1>Website Title</h1>
+      <p class="lead">This page demonstrates using your GitHub-hosted image as a watermark.</p>
+    </header>
+
+    <main>
+      <p>
+        Put your site content here. The watermark is fixed, subtle, and clickable elements remain usable
+        because the watermark has <code>pointer-events: none</code>.
+      </p>
+
+      <h2>Usage Notes</h2>
+      <ul>
+        <li>Edit CSS variables near the top of <code>&lt;style&gt;</code> to change opacity, size, repeat, or blend.</li>
+        <li>If you want the watermark to tile across the whole page, set <code>--watermark-repeat: repeat;</code>
+            and adjust <code>--watermark-size</code> (e.g., <code>200px</code>).</li>
+        <li>For a single centered watermark, keep <code>--watermark-repeat: no-repeat</code> and use a relative unit like <code>vmin</code>.</li>
+      </ul>
+
+      <h3>Example Code Snippet</h3>
+      <pre class="code"><code>&lt;span class="watermark"&gt;&lt;/span&gt;</code></pre>
+    </main>
+  </div>
+
+</body>
+</html>
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
